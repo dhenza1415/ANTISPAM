@@ -9,7 +9,7 @@ from humanfriendly import format_timespan, format_size, format_number, format_le
 import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, pytz, urllib, urllib.parse,timeit,atexit
 from time import strftime
 #==================================================================================================================#
-dz = LINE("")
+dz = LINE("EEEQLcTTFsMR9bN2koZb.SCwNhYE4y4LUNus/QfFtwW.3F8z9XtMHSn6xB+8qPtRsTkn/YfKWxVYYVpsyrYkDwY=")
 dz.log("Auth Token : " + str(dz.authToken))
 dzMID = dz.profile.mid
 botStart = time.time()
@@ -83,7 +83,7 @@ def dhenzaBots(op):
             receiver = msg.to
             sender = msg._from
             if msg.toType == 0:
-                if sender != me.profile.mid:
+                if sender != dz.profile.mid:
                     to = sender
                 else:
                     to = receiver
@@ -96,7 +96,7 @@ def dhenzaBots(op):
             if sender in Dhenza:
                 if text.lower() in ['speed','sp']:
                     dz.sendReplyMessage(msg.id, to,"About"+str(timeit.timeit('"-".join(str(n) for n in range(100))',number=1000)) + "secs")
-                elif text.lower() == 'help':
+                elif text.lower() in ['help']:
                 	  dz.sendReplyMessage(msg.id, to, "🔖Menu Selfbot \n🕷•Me \n🕷•Sp \n🕷•Runtime \n🕷•Restart")
                 elif text.lower() == 'runtime':
                        dz.sendReplyMessage(msg.id, to, "System run {}".format(str(format_timespan(time.time() - botStart))))
