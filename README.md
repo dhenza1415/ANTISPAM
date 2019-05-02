@@ -6,13 +6,13 @@
 
 ----
 
-## Usage
+## Cara login token
 
-- `me = LINE()`
-- `me = LINE("token")`
-- `me = LINE("mail",password")`
+- `dz = LINE()`
+- `dz = LINE("token")`
+- `dz = LINE("mail",password")`
 
-## Install
+## Installan
 
 - `apt update`
 - `apt upgrade`
@@ -25,25 +25,25 @@
 - `pip install bs4`
 - `pip install humanfriendly`
 - `pip install pytz`
-- `git clone https://github.com/yinmo-public/anti-spam`
-- `cd anti-spam`
-- `python anti-spam-mini.py`
+- `git clone https://github.com/dhenza14q5/ANTISPAM`
+- `cd ANTISPAM`
+- `python blockinvite.py`
 
-## How it works?
+## Fungsi login sb
 
-- `AutoBlock once someone add you`
-- `AutoLeave Room`
+- `Reject invitan`
+- `AutoLeave jika ada yang invite kurang dari 5 member`
 - `AutoReject Spam Invite`
-- `AutoBlock once someone invite you group call`
+- `AutoBlock jika ada yang spam call`
 
-## Special Thanks To 
+## Special Thanks to
 [@rootmelo92118](https://github.com/rootmelo92118)
 
 [@Kazumi](https://github.com/KazumiLine)
 
 [@yurou](https://github.com/yurou0312)
 
-## Credits to
-[@author](https://line.me/ti/p/3eamxoks_T)
+## Di upgrade ulang 
+[@author](https://line.me/ti/p/tbotprotect)
 
-## Update 04/01/2019
+## Update 02/05/2019
