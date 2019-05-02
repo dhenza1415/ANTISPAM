@@ -44,6 +44,6 @@
 [@yurou](https://github.com/yurou0312)
 
 ## Di upgrade ulang 
-[@author](https://line.me/ti/p/tbotprotect)
+[@teambotprotect](https://line.me/ti/p/~tbotprotect)
 
 ## Update 02/05/2019
