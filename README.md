@@ -1,4 +1,4 @@
-# ![logo](Line/LINE.png) LINE 邀機對策
+# ![logo](Line/LINE.png) LINE TBP
 
  [![Supported python versions: 3.x](https://img.shields.io/badge/python-3.x-green.svg "Supported python versions: 3.x")](https://www.python.org/downloads/) 
 
