@@ -25,7 +25,7 @@
 - `pip install bs4`
 - `pip install humanfriendly`
 - `pip install pytz`
-- `git clone https://github.com/dhenza14q5/ANTISPAM`
+- `git clone https://github.com/dhenza1415/ANTISPAM`
 - `cd ANTISPAM`
 - `python blockinvite.py`
 
