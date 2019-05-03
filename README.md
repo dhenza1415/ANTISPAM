@@ -3,7 +3,7 @@
  [![Supported python versions: 3.x](https://img.shields.io/badge/python-3.x-green.svg "Supported python versions: 3.x")](https://www.python.org/downloads/) 
 
 *LINE Simple SelfBot* 
-T
+
 ----
 
 ## Cara login token
