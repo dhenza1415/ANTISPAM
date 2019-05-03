@@ -9,7 +9,7 @@ from humanfriendly import format_timespan, format_size, format_number, format_le
 import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, pytz, urllib, urllib.parse,timeit,atexit
 from time import strftime
 #==================================================================================================================#
-dz = LINE("EEEQLcTTFsMR9bN2koZb.SCwNhYE4y4LUNus/QfFtwW.3F8z9XtMHSn6xB+8qPtRsTkn/YfKWxVYYVpsyrYkDwY=")
+dz = LINE("")
 dz.log("Auth Token : " + str(dz.authToken))
 dzMID = dz.profile.mid
 botStart = time.time()
