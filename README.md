@@ -27,7 +27,7 @@
 - `pip install pytz`
 - `git clone https://github.com/dhenza1415/ANTISPAM`
 - `cd ANTISPAM`
-- `python blockinvite.py`
+- `python3 blockinvite.py`
 
 ## Fungsi login sb
 
