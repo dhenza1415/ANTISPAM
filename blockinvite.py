@@ -53,7 +53,7 @@ def sendMention(to, text="", mids=[]):
         textx += mention + str(text)
     dz.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
 #==================================================================================================================#
-def dhenzaBots(op):
+def dhenzaBot(op):
     try:
         if op.type == 0:
             return
@@ -97,7 +97,7 @@ def dhenzaBots(op):
                 if text.lower() in ['speed','sp']:
                     dz.sendReplyMessage(msg.id, to,"About"+str(timeit.timeit('"-".join(str(n) for n in range(100))',number=1000)) + "secs")
                 elif text.lower() in ['help']:
-                	  dz.sendReplyMessage(msg.id, to, "🔖Menu Selfbot \n🕷•Me \n🕷•Sp \n🕷•Runtime \n🕷•Restart")
+                	   dz.sendReplyMessage(msg.id, to, "🔖Menu Selfbot \n🕷•Me \n🕷•Sp \n🕷•Runtime \n🕷•Restart")
                 elif text.lower() == 'runtime':
                        dz.sendReplyMessage(msg.id, to, "System run {}".format(str(format_timespan(time.time() - botStart))))
                 elif text.lower() in ['me']:
