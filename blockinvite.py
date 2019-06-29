@@ -21,7 +21,7 @@ def restartBot():
     python = sys.executable
     os.execl(python, python, *sys.argv)
 def logError(text):
-    me.log("[ Error ] " + str(text))
+    dz.log("[ Error ] " + str(text))
     time_ = datetime.now()
     with open("errorLog.txt","a") as error:
         error.write("\n[%s] %s" % (str(time), text))
@@ -52,8 +52,27 @@ def sendMention(to, text="", mids=[]):
         arr.append(arrData)
         textx += mention + str(text)
     dz.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
+ 
+def timeChange(secs):
+	mins, secs = divmod(secs,60)
+	hours, mins = divmod(mins,60)
+	days, hours = divmod(hours,24)
+	weeks, days = divmod(days,7)
+	months, weeks = divmod(weeks,4)
+	text = ""
+	if months != 0: text += "%02d Bulan" % (months)
+	if weeks != 0: text += " %02d Minggu" % (weeks)
+	if days != 0: text += " %02d Hari" % (days)
+	if hours !=  0: text +=  " %02d Jam" % (hours)
+	if mins != 0: text += " %02d Menit" % (mins)
+	if secs != 0: text += " %02d Detik" % (secs)
+	if text[0] == " ":
+		text = text[1:]
+	return text
+ronum = 0
 #==================================================================================================================#
 def dhenzaBot(op):
+    global ronum
     try:
         if op.type == 0:
             return
@@ -73,6 +92,15 @@ def dhenzaBot(op):
                   dz.rejectGroupInvitation(op.param1)
                elif len(group.members) < 5:
                   dz.rejectGroupInvitation(op.param1)
+        if op.type == 13:
+            group = dz.getCompactGroup(op.param1)
+            group.members = [] if not group.members else group.members
+            if len(group.members) <= 2:
+                dz.acceptGroupInvitation(group.id)
+                time.sleep(0.65)
+                dz.leaveGroup(group.id)
+                ronum = (ronum + 1)
+                print("Autorejectgroup",ronum)
         if op.type == 21 or op.type == 22 or op.type ==24:
             print ("[ NOTIFY LEAVE ROOM ]")
             dz.leaveRoom(op.param1)
@@ -91,13 +119,13 @@ def dhenzaBot(op):
                 to = receiver
             if 'ORGCONTP' in msg.contentMetadata.keys()!= None and msg.contentMetadata['ORGCONTP'] == "CALL":
                 if msg.contentMetadata['GC_EVT_TYPE'] == "I":
-                    dz.sendMessage(sender, "DON'T INVITE ME GROUP CALL")
+                    dz.sendMessage(sender, "JANGAN SPAM CALL CUY KPAKSA AIM BLOCK")
                     dz.blockContact(sender)
             if sender in Dhenza:
                 if text.lower() in ['speed','sp']:
                     dz.sendReplyMessage(msg.id, to,"About"+str(timeit.timeit('"-".join(str(n) for n in range(100))',number=1000)) + "secs")
                 elif text.lower() in ['help']:
-                	   dz.sendReplyMessage(msg.id, to, "🔖Menu Selfbot \n🕷•Me \n🕷•Sp \n🕷•Runtime \n🕷•Restart")
+                	   dz.sendReplyMessage(msg.id, to, "🔖Menu Selfbot \n🕷•Me \n🕷•Sp \n🕷•Runtime \n🕷•Restart\n🕷•tbp_cleargroup")
                 elif text.lower() == 'runtime':
                        dz.sendReplyMessage(msg.id, to, "System run {}".format(str(format_timespan(time.time() - botStart))))
                 elif text.lower() in ['me']:
@@ -105,8 +133,24 @@ def dhenzaBot(op):
                 elif text.lower() == 'restart':
                        dz.sendReplyMessage(msg.id, to, "Please wait for Restart...")
                        restartBot()
+                elif "tbp_cleargroup" == msg.text.lower():
+                        ginvited = dz.getGroupIdsInvited()
+                        if ginvited != [] and ginvited != None:
+                           for gid in ginvited:
+                                time.sleep(0.65)
+                                dz.rejectGroupInvitation(gid)
+                                ronum = (ronum + 1)
+                                print("Clear group",ronum)
+                        dz.sendMessage(to, "Berhasil Bersihkan invitan {} Group".format(str(len(ginvited))))
     except Exception as error:
         logError(error)
+        
+def retimespam():
+    print(datetime.datetime.fromtimestamp(float(str(op.createdTime)[:10])))
+    ops = oepoll.singleTrace(count=50)
+    if ops is not None:
+        for op in ops:
+            print(op)        
 while True:
     try:
         ops = oepoll.singleTrace(count=50)
@@ -114,7 +158,6 @@ while True:
             for op in ops:
                 dhenzaBot(op)
                 oepoll.setRevision(op.revision)
-    except:
-        pass
-        
+    except Exception as error:
+        logError(error)
         
